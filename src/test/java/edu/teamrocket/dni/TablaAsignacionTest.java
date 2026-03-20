@@ -25,14 +25,33 @@ public class TablaAsignacionTest {
         assertEquals(tablaAsignacion.getLetra(4), "G");
         assertEquals(tablaAsignacion.getLetra(6), "Y");
         assertEquals(tablaAsignacion.getLetra(8), "P");
+        assertEquals(tablaAsignacion.getLetra(10), "X");
+        assertEquals(tablaAsignacion.getLetra(23), "Letra fuera de rango");
     }
 
+    @Test
+    public void getModuloTest() {
+        assertEquals(tablaAsignacion.getModulo(), 23);
+    }
 
+    @Test
+    public void esLetraPermitidaTest() {
+        assertEquals(tablaAsignacion.esLetraPermitida("W"), true);
+        assertEquals(tablaAsignacion.esLetraPermitida("J"), true);
+        assertEquals(tablaAsignacion.esLetraPermitida("H"), true);
+        assertEquals(tablaAsignacion.esLetraPermitida("L"), true);
+        assertEquals(tablaAsignacion.esLetraPermitida("Ñ"), false);
+    }
 
-
-
-
-
+    @Test
+    public void calcularLetraTest() {
+        assertEquals(tablaAsignacion.calcularLetra(574382930), "C");
+        assertEquals(tablaAsignacion.calcularLetra(12345678), "Z");
+        assertEquals(tablaAsignacion.calcularLetra(98765432), "M");
+        assertEquals(tablaAsignacion.calcularLetra(11111111), "H");
+        assertEquals(tablaAsignacion.calcularLetra(23456789), "D");
+        assertEquals(tablaAsignacion.calcularLetra(87654321), "X");
+    }
 
 
 

@@ -1,5 +1,7 @@
 package edu.teamrocket.dni;
 
+import java.util.Arrays;
+
 public class TablaAsignacion {
     
     //atributos
@@ -13,10 +15,25 @@ public class TablaAsignacion {
         return this.tabla;
     }
 
-    String getLetra (int index) {
-        return this.tabla[index];
+    String getLetra (int posicion) {
+        try {
+            return this.tabla[posicion];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return "Letra fuera de rango";
+        }
     }
 
-    
+    int getModulo() {
+        return this.tabla.length;
+    }
+
+    boolean esLetraPermitida(String letra) {
+        return Arrays.asList(this.tabla).contains(letra);
+    }
+
+    String calcularLetra(int numeroDni) {
+        int posicion = numeroDni % getModulo();
+        return getLetra(posicion);
+    }
 
 }
